@@ -53,7 +53,7 @@ function print_status_nl() {
 
 # Make sure only non-root users can run our script
 function quit_if_script_was_run_as_root() {
-  if [[ $EUID -eq 0 ]]; then
+  if  [[ ! -f /.dockerenv && $EUID -eq 0 ]]; then
     echo "SJSU-DEV installer script must NOT be run as root! " 1>&2
     exit 1
   fi

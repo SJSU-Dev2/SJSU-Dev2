@@ -1,0 +1,15 @@
+FROM ubuntu:18.04 as build_stage
+
+WORKDIR /SJSU-DEV2
+
+RUN apt-get update \
+  && apt-get install -y curl cmake git make g++ python3 \
+  && apt-get install sudo -y
+
+COPY . .
+
+RUN ls -la
+
+RUN ls tools
+
+RUN ["./setup"]
